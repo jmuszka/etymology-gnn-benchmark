@@ -19,7 +19,7 @@ from torch import nn
 from torch.nn.utils.rnn import pack_padded_sequence, pad_sequence
 from torch.utils.data import DataLoader, Dataset
 
-from prepare_etymology import COARSE_LABELS, FINE_LABELS, file_sha256, word_id, write_json
+from lstm_baseline.prepare_etymology import COARSE_LABELS, FINE_LABELS, file_sha256, word_id, write_json
 
 
 def load_words(directory):

@@ -1,17 +1,33 @@
 [project]
 name = "etymology-gnn-benchmark"
 version = "0.1.0"
-description = "Add your description here"
+description = "Benchmarking LSTM, GNN, and fusion models for computational etymology."
 readme = "README.md"
 authors = [
     { name = "Josh Muszka", email = "jmuszka@uwo.ca" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "torch>=2.5,<3",
+]
 
 [project.scripts]
-etymology-gnn-benchmark = "etymology_gnn_benchmark:main"
+lstm-prepare = "lstm_baseline.prepare_etymology:main"
+lstm-train = "lstm_baseline.train_lstm:main"
 
 [build-system]
-requires = ["uv_build>=0.12.19,<0.13.0"]
+requires = ["uv_build>=0.13,<0.14"]
 build-backend = "uv_build"
+
+[tool.uv.build-backend]
+# Each experiment method is its own top-level package under src/.
+# Add new method packages (e.g. "gnn", "fusion") to this list.
+module-name = ["lstm_baseline"]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+    "jupyterlab>=4.6.6",
+    "matplotlib>=3.11.2",
+    "pandas>=3.1.1",
+]

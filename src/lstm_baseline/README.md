@@ -7,50 +7,29 @@ It includes preparation and training for fine mechanism, coarse mechanism,
 and parent-language prediction. Begin with English fine mechanism.
 The raw CSV stays on your computer.
 
-## 1. Put the files in your existing Project folder
+## 1. Set up the environment
 
-Extract this archive into the VS Code Project folder containing `Project.py`.
-The result should include these paths:
-
-- `Project.py` (your existing preview script)
-- `Data/etymology.csv` (your full dataset)
-- `etymology_baseline/prepare_etymology.py`
-- `etymology_baseline/train_lstm.py`
-- `etymology_baseline/test_pipeline.py`
-- `etymology_baseline/requirements.txt`
-
-Open the Project folder in VS Code. Run all commands below in its Terminal,
-not inside a `.py` file or the Python interactive prompt.
-
-## 2. Activate your environment and install PyTorch
-
-Your existing `.venv` can be used. In Terminal:
+From the repository root (see the top-level `README.md`), install everything with uv:
 
 ```bash
-source .venv/bin/activate
-python -m pip install -r etymology_baseline/requirements.txt
-python -c "import torch; print(torch.__version__); print(torch.rand(2, 2))"
+uv sync
+uv run python -c "import torch; print(torch.__version__); print(torch.rand(2, 2))"
 ```
 
-The final command should print a version and a tensor. Record the installed
-version when sharing results. The preprocessor uses only Python's standard
-library; it does not require pandas or scikit-learn.
+Place the full dataset at `Data/etymology.csv` in the repository root
+(it is git-ignored). Run all commands below from the repository root.
+The preprocessor uses only Python's standard library.
 
-## 3. Run the focused software checks
+## 2. Code layout
 
-```bash
-python etymology_baseline/test_pipeline.py
-```
+- `src/lstm_baseline/prepare_etymology.py` (CLI: `uv run lstm-prepare`)
+- `src/lstm_baseline/train_lstm.py` (CLI: `uv run lstm-train`)
+- Committed results: `results/lstm_baseline/runs/*/{metrics.json,history.csv}`
 
-These check hierarchy handling, duplicate labels, source-row-order invariance,
-split overlap, Unicode input, padding, hand-calculated metrics, and whether
-the LSTM can learn a small controlled problem. Expect the unittest summary `OK`.
-If PyTorch is unavailable, neural checks are skipped; install it before training.
-
-## 4. Prepare the FULL English dataset
+## 3. Prepare the FULL English dataset
 
 ```bash
-python etymology_baseline/prepare_etymology.py --csv Data/etymology.csv --language English --out prepared/english --seed 42
+uv run lstm-prepare --csv Data/etymology.csv --language English --out prepared/english --seed 42
 ```
 
 Use `etymology.csv`, not `data_preview_1000.csv`, for the experiment.
@@ -80,19 +59,19 @@ This is our explicit split implementation, not a recovered original split.
 Existing output directories are protected against replacement. To repeat a
 preparation, choose a new path such as `--out prepared/english_v2`.
 
-## 5. Run one epoch to check the training pipeline
+## 4. Run one epoch to check the training pipeline
 
 ```bash
-python etymology_baseline/train_lstm.py --data prepared/english --task fine --out runs/english_fine_smoke --epochs 1 --device cpu
+uv run lstm-train --data prepared/english --task fine --out runs/english_fine_smoke --epochs 1 --device cpu
 ```
 
 This verifies the full pipeline on your prepared data. It is not the final
 baseline result. The trainer prints batch progress and epoch losses.
 
-## 6. Train the English fine-mechanism baseline
+## 5. Train the English fine-mechanism baseline
 
 ```bash
-python etymology_baseline/train_lstm.py --data prepared/english --task fine --out runs/english_fine_seed42 --epochs 50 --patience 5 --seed 42 --device cpu
+uv run lstm-train --data prepared/english --task fine --out runs/english_fine_seed42 --epochs 50 --patience 5 --seed 42 --device cpu
 ```
 
 Training stops after five consecutive epochs without a lower validation loss,
@@ -114,11 +93,11 @@ Outputs under `runs/english_fine_seed42`:
 Training time includes training and per-epoch validation. It excludes data
 preparation and final test scoring. Model parameter count is also recorded.
 
-## 7. Run the other two English tasks on the SAME word split
+## 6. Run the other two English tasks on the SAME word split
 
 ```bash
-python etymology_baseline/train_lstm.py --data prepared/english --task coarse --out runs/english_coarse_seed42 --seed 42 --device cpu
-python etymology_baseline/train_lstm.py --data prepared/english --task parent --out runs/english_parent_seed42 --seed 42 --device cpu
+uv run lstm-train --data prepared/english --task coarse --out runs/english_coarse_seed42 --seed 42 --device cpu
+uv run lstm-train --data prepared/english --task parent --out runs/english_parent_seed42 --seed 42 --device cpu
 ```
 
 Coarse targets combine the accepted fine labels into borrowing/inheritance
@@ -133,27 +112,27 @@ the head contains the available languages plus `<OTHER>`.
 This parent-vocabulary choice is documented because the paper's exact
 vocabulary construction details are incomplete.
 
-## 8. Repeat seeds and extend the language coverage
+## 7. Repeat seeds and extend the language coverage
 
 Keep `prepared/english` fixed and change only the TRAINING seed and output:
 
 ```bash
-python etymology_baseline/train_lstm.py --data prepared/english --task fine --out runs/english_fine_seed43 --seed 43 --device cpu
-python etymology_baseline/train_lstm.py --data prepared/english --task fine --out runs/english_fine_seed44 --seed 44 --device cpu
+uv run lstm-train --data prepared/english --task fine --out runs/english_fine_seed43 --seed 43 --device cpu
+uv run lstm-train --data prepared/english --task fine --out runs/english_fine_seed44 --seed 44 --device cpu
 ```
 
 Repeat the three tasks for each evaluation language. Example:
 
 ```bash
-python etymology_baseline/prepare_etymology.py --csv Data/etymology.csv --language Japanese --out prepared/japanese --seed 42
-python etymology_baseline/train_lstm.py --data prepared/japanese --task fine --out runs/japanese_fine_seed42 --seed 42 --device cpu
+uv run lstm-prepare --csv Data/etymology.csv --language Japanese --out prepared/japanese --seed 42
+uv run lstm-train --data prepared/japanese --task fine --out runs/japanese_fine_seed42 --seed 42 --device cpu
 ```
 
 For the multilingual experiment:
 
 ```bash
-python etymology_baseline/prepare_etymology.py --csv Data/etymology.csv --language all --out prepared/multilingual --seed 42
-python etymology_baseline/train_lstm.py --data prepared/multilingual --task fine --out runs/multilingual_fine_seed42 --seed 42 --device cpu
+uv run lstm-prepare --csv Data/etymology.csv --language all --out prepared/multilingual --seed 42
+uv run lstm-train --data prepared/multilingual --task fine --out runs/multilingual_fine_seed42 --seed 42 --device cpu
 ```
 
 Run the other tasks with `--task coarse` and `--task parent` and new output

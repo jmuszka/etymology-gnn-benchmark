@@ -1,0 +1,354 @@
+{
+  "status": "complete",
+  "config": {
+    "task": "fine",
+    "embedding_dim": 128,
+    "hidden_dim": 128,
+    "num_layers": 1,
+    "bidirectional": false,
+    "dropout": 0.0,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "loss": "BCEWithLogitsLoss",
+    "batch_size": 64,
+    "max_epochs": 50,
+    "patience": 5,
+    "seed": 44,
+    "threshold": 0.5,
+    "threads": 4,
+    "device": "cpu",
+    "multilingual": false,
+    "target_names": [
+      "affix",
+      "borrowing",
+      "compound",
+      "inherited",
+      "prefix",
+      "suffix"
+    ],
+    "vocabulary_size": 214,
+    "sequence_truncation": null,
+    "sample_counts": {
+      "train": 290600,
+      "validation": 36325,
+      "test": 36326
+    },
+    "source_sha256": "42102aba2c83158ebd1243a9b1bf734d85378eadd47fd8239c3d229c95007b6a",
+    "prepared_manifest_sha256": "9aca312ad45d2669506150cd580f697f8a629f349055f5145240cb165c36949d",
+    "split_seed": 42,
+    "torch_version": "2.15.0",
+    "python_version": "3.14.3",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "unspecified_paper_choices": [
+      "layers/direction",
+      "dropout",
+      "batch size",
+      "epochs/patience",
+      "seed",
+      "threshold",
+      "exact-match/F1 metrics",
+      "text processing"
+    ],
+    "parent_vocabulary_policy": "Top 5 from training annotations within this run; remaining languages OTHER.",
+    "accuracy_definition": "Exact equality of predicted and gold label sets at the recorded threshold.",
+    "comparability": "Method reimplementation on a different, incompletely verified data source."
+  },
+  "best_epoch": 14,
+  "epochs_run": 19,
+  "best_validation_bce": 0.23744732133454483,
+  "training_and_validation_seconds": 588.7711687910487,
+  "parameter_count": 160262,
+  "lstm_validation": {
+    "examples": 36325,
+    "exact_match_accuracy": 0.6034686854783207,
+    "label_accuracy": 0.8973021335168616,
+    "micro_f1": 0.6751143043762247,
+    "macro_f1": 0.6279053195490596,
+    "empty_prediction_rate": 0.15520991052993807,
+    "per_label": {
+      "affix": {
+        "precision": 0.5692188708430008,
+        "recall": 0.2582758217335361,
+        "f1": 0.3553266816865143,
+        "support": 8549
+      },
+      "borrowing": {
+        "precision": 0.8738396624472574,
+        "recall": 0.7594426109277594,
+        "f1": 0.8126348832646655,
+        "support": 5454
+      },
+      "compound": {
+        "precision": 0.7915605674790833,
+        "recall": 0.7284901238701038,
+        "f1": 0.7587168758716876,
+        "support": 2987
+      },
+      "inherited": {
+        "precision": 0.6464435146443515,
+        "recall": 0.24140625,
+        "f1": 0.3515358361774744,
+        "support": 1280
+      },
+      "prefix": {
+        "precision": 0.7699151242458329,
+        "recall": 0.8135941214609899,
+        "f1": 0.7911522093206536,
+        "support": 9254
+      },
+      "suffix": {
+        "precision": 0.6919678714859437,
+        "recall": 0.7042714081340691,
+        "f1": 0.6980654309733617,
+        "support": 9786
+      }
+    },
+    "bce_loss": 0.23744732133454483,
+    "per_language": {
+      "English": {
+        "examples": 36325,
+        "exact_match_accuracy": 0.6034686854783207,
+        "label_accuracy": 0.8973021335168616,
+        "micro_f1": 0.6751143043762247,
+        "macro_f1": 0.6279053195490596,
+        "empty_prediction_rate": 0.15520991052993807,
+        "per_label": {
+          "affix": {
+            "precision": 0.5692188708430008,
+            "recall": 0.2582758217335361,
+            "f1": 0.3553266816865143,
+            "support": 8549
+          },
+          "borrowing": {
+            "precision": 0.8738396624472574,
+            "recall": 0.7594426109277594,
+            "f1": 0.8126348832646655,
+            "support": 5454
+          },
+          "compound": {
+            "precision": 0.7915605674790833,
+            "recall": 0.7284901238701038,
+            "f1": 0.7587168758716876,
+            "support": 2987
+          },
+          "inherited": {
+            "precision": 0.6464435146443515,
+            "recall": 0.24140625,
+            "f1": 0.3515358361774744,
+            "support": 1280
+          },
+          "prefix": {
+            "precision": 0.7699151242458329,
+            "recall": 0.8135941214609899,
+            "f1": 0.7911522093206536,
+            "support": 9254
+          },
+          "suffix": {
+            "precision": 0.6919678714859437,
+            "recall": 0.7042714081340691,
+            "f1": 0.6980654309733617,
+            "support": 9786
+          }
+        }
+      }
+    }
+  },
+  "lstm_test": {
+    "examples": 36326,
+    "exact_match_accuracy": 0.6036723008313605,
+    "label_accuracy": 0.8966167483345262,
+    "micro_f1": 0.6739592828927378,
+    "macro_f1": 0.632640878504814,
+    "empty_prediction_rate": 0.14975499642129605,
+    "per_label": {
+      "affix": {
+        "precision": 0.5603470273028834,
+        "recall": 0.2574443141852286,
+        "f1": 0.3527994216402924,
+        "support": 8530
+      },
+      "borrowing": {
+        "precision": 0.8655936454849499,
+        "recall": 0.7569000182781941,
+        "f1": 0.8076060458313018,
+        "support": 5471
+      },
+      "compound": {
+        "precision": 0.7969816744520302,
+        "recall": 0.7288859677949392,
+        "f1": 0.7614143494679025,
+        "support": 3043
+      },
+      "inherited": {
+        "precision": 0.6394052044609665,
+        "recall": 0.28013029315960913,
+        "f1": 0.3895809739524349,
+        "support": 1228
+      },
+      "prefix": {
+        "precision": 0.7647118609614798,
+        "recall": 0.8134054054054054,
+        "f1": 0.7883074021687884,
+        "support": 9250
+      },
+      "suffix": {
+        "precision": 0.687356091700871,
+        "recall": 0.7051453219677519,
+        "f1": 0.6961370779681638,
+        "support": 9737
+      }
+    },
+    "bce_loss": 0.23815015555232105,
+    "per_language": {
+      "English": {
+        "examples": 36326,
+        "exact_match_accuracy": 0.6036723008313605,
+        "label_accuracy": 0.8966167483345262,
+        "micro_f1": 0.6739592828927378,
+        "macro_f1": 0.632640878504814,
+        "empty_prediction_rate": 0.14975499642129605,
+        "per_label": {
+          "affix": {
+            "precision": 0.5603470273028834,
+            "recall": 0.2574443141852286,
+            "f1": 0.3527994216402924,
+            "support": 8530
+          },
+          "borrowing": {
+            "precision": 0.8655936454849499,
+            "recall": 0.7569000182781941,
+            "f1": 0.8076060458313018,
+            "support": 5471
+          },
+          "compound": {
+            "precision": 0.7969816744520302,
+            "recall": 0.7288859677949392,
+            "f1": 0.7614143494679025,
+            "support": 3043
+          },
+          "inherited": {
+            "precision": 0.6394052044609665,
+            "recall": 0.28013029315960913,
+            "f1": 0.3895809739524349,
+            "support": 1228
+          },
+          "prefix": {
+            "precision": 0.7647118609614798,
+            "recall": 0.8134054054054054,
+            "f1": 0.7883074021687884,
+            "support": 9250
+          },
+          "suffix": {
+            "precision": 0.687356091700871,
+            "recall": 0.7051453219677519,
+            "f1": 0.6961370779681638,
+            "support": 9737
+          }
+        }
+      }
+    }
+  },
+  "majority_test": {
+    "examples": 36326,
+    "exact_match_accuracy": 0.2566206023234047,
+    "label_accuracy": 0.7517342949953202,
+    "micro_f1": 0.26464632737650334,
+    "macro_f1": 0.07046146943678584,
+    "empty_prediction_rate": 0.0,
+    "per_label": {
+      "affix": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 8530
+      },
+      "borrowing": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 5471
+      },
+      "compound": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 3043
+      },
+      "inherited": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 1228
+      },
+      "prefix": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 9250
+      },
+      "suffix": {
+        "precision": 0.26804492649892636,
+        "recall": 1.0,
+        "f1": 0.4227688166207151,
+        "support": 9737
+      }
+    },
+    "per_language": {
+      "English": {
+        "examples": 36326,
+        "exact_match_accuracy": 0.2566206023234047,
+        "label_accuracy": 0.7517342949953202,
+        "micro_f1": 0.26464632737650334,
+        "macro_f1": 0.07046146943678584,
+        "empty_prediction_rate": 0.0,
+        "per_label": {
+          "affix": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 8530
+          },
+          "borrowing": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 5471
+          },
+          "compound": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 3043
+          },
+          "inherited": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1228
+          },
+          "prefix": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 9250
+          },
+          "suffix": {
+            "precision": 0.26804492649892636,
+            "recall": 1.0,
+            "f1": 0.4227688166207151,
+            "support": 9737
+          }
+        }
+      }
+    },
+    "most_frequent_label_by_language": {
+      "English": "suffix"
+    }
+  },
+  "notes": [
+    "Test examples are scored only after selecting the best checkpoint.",
+    "Exact-match and F1 definitions are explicit choices; paper accuracy details are incomplete.",
+    "Macro F1 includes zero-support labels as zero.",
+    "No test-set threshold tuning or empty-prediction argmax fallback is applied."
+  ]
+}
