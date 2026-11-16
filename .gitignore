@@ -1,21 +1,92 @@
-# Python
+# Python bytecode and caches
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
 .venv/
+venv/
+env/
+ENV/
+
+# Packaging and build output
 *.egg-info/
+*.egg
+.eggs/
 build/
 dist/
+wheels/
+pip-wheel-metadata/
+MANIFEST
+
+# Test, lint and type-check caches
 .pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+.hypothesis/
+.mypy_cache/
+.pyright/
+.pytype/
+.ruff_cache/
 
 # Jupyter
 .ipynb_checkpoints/
+.virtual_documents/
 
-# Local data and experiment outputs (large; keep out of git)
+# Local data and experiment outputs (large; keep out of git).
+# Committed result summaries live under results/ and are tracked.
 /Data/
 /data/
 /prepared/
 /runs/
+
+# Model checkpoints and experiment trackers
 *.pt
+*.pth
+*.ckpt
+*.safetensors
+wandb/
+mlruns/
+lightning_logs/
+tb_logs/
+events.out.tfevents.*
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+.envrc
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+.claude/settings.local.json
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
 
 # macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+.Trash-*
