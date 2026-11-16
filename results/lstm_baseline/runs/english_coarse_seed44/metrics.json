@@ -1,0 +1,206 @@
+{
+  "status": "complete",
+  "config": {
+    "task": "coarse",
+    "embedding_dim": 128,
+    "hidden_dim": 128,
+    "num_layers": 1,
+    "bidirectional": false,
+    "dropout": 0.0,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "loss": "BCEWithLogitsLoss",
+    "batch_size": 64,
+    "max_epochs": 50,
+    "patience": 5,
+    "seed": 44,
+    "threshold": 0.5,
+    "threads": 4,
+    "device": "cpu",
+    "multilingual": false,
+    "target_names": [
+      "borrowing_inheritance",
+      "compositional"
+    ],
+    "vocabulary_size": 214,
+    "sequence_truncation": null,
+    "sample_counts": {
+      "train": 290600,
+      "validation": 36325,
+      "test": 36326
+    },
+    "source_sha256": "42102aba2c83158ebd1243a9b1bf734d85378eadd47fd8239c3d229c95007b6a",
+    "prepared_manifest_sha256": "9aca312ad45d2669506150cd580f697f8a629f349055f5145240cb165c36949d",
+    "split_seed": 42,
+    "torch_version": "2.15.0",
+    "python_version": "3.14.3",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "unspecified_paper_choices": [
+      "layers/direction",
+      "dropout",
+      "batch size",
+      "epochs/patience",
+      "seed",
+      "threshold",
+      "exact-match/F1 metrics",
+      "text processing"
+    ],
+    "parent_vocabulary_policy": "Top 5 from training annotations within this run; remaining languages OTHER.",
+    "accuracy_definition": "Exact equality of predicted and gold label sets at the recorded threshold.",
+    "comparability": "Method reimplementation on a different, incompletely verified data source."
+  },
+  "best_epoch": 8,
+  "epochs_run": 13,
+  "best_validation_bce": 0.1698887894814866,
+  "training_and_validation_seconds": 390.83646800002316,
+  "parameter_count": 159746,
+  "lstm_validation": {
+    "examples": 36325,
+    "exact_match_accuracy": 0.9241844459738472,
+    "label_accuracy": 0.9400550584996559,
+    "micro_f1": 0.941023522879623,
+    "macro_f1": 0.8851373182302716,
+    "empty_prediction_rate": 0.0006331727460426703,
+    "per_label": {
+      "borrowing_inheritance": {
+        "precision": 0.8682603385098586,
+        "recall": 0.7432412247946228,
+        "f1": 0.8009013359085788,
+        "support": 6695
+      },
+      "compositional": {
+        "precision": 0.9589897232692246,
+        "recall": 0.9799841980510929,
+        "f1": 0.9693733005519645,
+        "support": 30376
+      }
+    },
+    "bce_loss": 0.1698887894814866,
+    "per_language": {
+      "English": {
+        "examples": 36325,
+        "exact_match_accuracy": 0.9241844459738472,
+        "label_accuracy": 0.9400550584996559,
+        "micro_f1": 0.941023522879623,
+        "macro_f1": 0.8851373182302716,
+        "empty_prediction_rate": 0.0006331727460426703,
+        "per_label": {
+          "borrowing_inheritance": {
+            "precision": 0.8682603385098586,
+            "recall": 0.7432412247946228,
+            "f1": 0.8009013359085788,
+            "support": 6695
+          },
+          "compositional": {
+            "precision": 0.9589897232692246,
+            "recall": 0.9799841980510929,
+            "f1": 0.9693733005519645,
+            "support": 30376
+          }
+        }
+      }
+    }
+  },
+  "lstm_test": {
+    "examples": 36326,
+    "exact_match_accuracy": 0.9253427297252657,
+    "label_accuracy": 0.9401117656774762,
+    "micro_f1": 0.9410105885383478,
+    "macro_f1": 0.885014817574701,
+    "empty_prediction_rate": 0.00046798436381655014,
+    "per_label": {
+      "borrowing_inheritance": {
+        "precision": 0.868809272918862,
+        "recall": 0.7426812790872241,
+        "f1": 0.8008093889113719,
+        "support": 6661
+      },
+      "compositional": {
+        "precision": 0.9588824799407083,
+        "recall": 0.9797833459550229,
+        "f1": 0.96922024623803,
+        "support": 30371
+      }
+    },
+    "bce_loss": 0.16653217062208875,
+    "per_language": {
+      "English": {
+        "examples": 36326,
+        "exact_match_accuracy": 0.9253427297252657,
+        "label_accuracy": 0.9401117656774762,
+        "micro_f1": 0.9410105885383478,
+        "macro_f1": 0.885014817574701,
+        "empty_prediction_rate": 0.00046798436381655014,
+        "per_label": {
+          "borrowing_inheritance": {
+            "precision": 0.868809272918862,
+            "recall": 0.7426812790872241,
+            "f1": 0.8008093889113719,
+            "support": 6661
+          },
+          "compositional": {
+            "precision": 0.9588824799407083,
+            "recall": 0.9797833459550229,
+            "f1": 0.96922024623803,
+            "support": 30371
+          }
+        }
+      }
+    }
+  },
+  "majority_test": {
+    "examples": 36326,
+    "exact_match_accuracy": 0.81663271485988,
+    "label_accuracy": 0.8263502725320707,
+    "micro_f1": 0.8280214836827613,
+    "macro_f1": 0.4553578121954511,
+    "empty_prediction_rate": 0.0,
+    "per_label": {
+      "borrowing_inheritance": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 6661
+      },
+      "compositional": {
+        "precision": 0.8360678302042615,
+        "recall": 1.0,
+        "f1": 0.9107156243909021,
+        "support": 30371
+      }
+    },
+    "per_language": {
+      "English": {
+        "examples": 36326,
+        "exact_match_accuracy": 0.81663271485988,
+        "label_accuracy": 0.8263502725320707,
+        "micro_f1": 0.8280214836827613,
+        "macro_f1": 0.4553578121954511,
+        "empty_prediction_rate": 0.0,
+        "per_label": {
+          "borrowing_inheritance": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 6661
+          },
+          "compositional": {
+            "precision": 0.8360678302042615,
+            "recall": 1.0,
+            "f1": 0.9107156243909021,
+            "support": 30371
+          }
+        }
+      }
+    },
+    "most_frequent_label_by_language": {
+      "English": "compositional"
+    }
+  },
+  "notes": [
+    "Test examples are scored only after selecting the best checkpoint.",
+    "Exact-match and F1 definitions are explicit choices; paper accuracy details are incomplete.",
+    "Macro F1 includes zero-support labels as zero.",
+    "No test-set threshold tuning or empty-prediction argmax fallback is applied."
+  ]
+}

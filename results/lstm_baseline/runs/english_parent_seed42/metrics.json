@@ -1,0 +1,354 @@
+{
+  "status": "complete",
+  "config": {
+    "task": "parent",
+    "embedding_dim": 128,
+    "hidden_dim": 128,
+    "num_layers": 1,
+    "bidirectional": false,
+    "dropout": 0.0,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "loss": "BCEWithLogitsLoss",
+    "batch_size": 64,
+    "max_epochs": 50,
+    "patience": 5,
+    "seed": 42,
+    "threshold": 0.5,
+    "threads": 4,
+    "device": "cpu",
+    "multilingual": false,
+    "target_names": [
+      "English",
+      "Middle English",
+      "French",
+      "Latin",
+      "German",
+      "<OTHER>"
+    ],
+    "vocabulary_size": 220,
+    "sequence_truncation": null,
+    "sample_counts": {
+      "train": 298195,
+      "validation": 37310,
+      "test": 37259
+    },
+    "source_sha256": "42102aba2c83158ebd1243a9b1bf734d85378eadd47fd8239c3d229c95007b6a",
+    "prepared_manifest_sha256": "9aca312ad45d2669506150cd580f697f8a629f349055f5145240cb165c36949d",
+    "split_seed": 42,
+    "torch_version": "2.15.0",
+    "python_version": "3.14.3",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "unspecified_paper_choices": [
+      "layers/direction",
+      "dropout",
+      "batch size",
+      "epochs/patience",
+      "seed",
+      "threshold",
+      "exact-match/F1 metrics",
+      "text processing"
+    ],
+    "parent_vocabulary_policy": "Top 5 from training annotations within this run; remaining languages OTHER.",
+    "accuracy_definition": "Exact equality of predicted and gold label sets at the recorded threshold.",
+    "comparability": "Method reimplementation on a different, incompletely verified data source."
+  },
+  "best_epoch": 7,
+  "epochs_run": 12,
+  "best_validation_bce": 0.031158910003393145,
+  "training_and_validation_seconds": 465.54338845802704,
+  "parameter_count": 161030,
+  "lstm_validation": {
+    "examples": 37310,
+    "exact_match_accuracy": 0.9533101045296167,
+    "label_accuracy": 0.9876619315643705,
+    "micro_f1": 0.9630382999223831,
+    "macro_f1": 0.7640250002652472,
+    "empty_prediction_rate": 0.009675690163495041,
+    "per_label": {
+      "English": {
+        "precision": 0.9977429590134441,
+        "recall": 0.999901655466317,
+        "f1": 0.9988211408736656,
+        "support": 30505
+      },
+      "Middle English": {
+        "precision": 0.8289156626506025,
+        "recall": 0.9772727272727273,
+        "f1": 0.8970013037809648,
+        "support": 1056
+      },
+      "French": {
+        "precision": 0.713963963963964,
+        "recall": 0.49453978159126366,
+        "f1": 0.584331797235023,
+        "support": 641
+      },
+      "Latin": {
+        "precision": 0.5818540433925049,
+        "recall": 0.5139372822299652,
+        "f1": 0.545790934320074,
+        "support": 574
+      },
+      "German": {
+        "precision": 0.8078078078078078,
+        "recall": 0.6359338061465721,
+        "f1": 0.7116402116402116,
+        "support": 423
+      },
+      "<OTHER>": {
+        "precision": 0.8749080206033848,
+        "recall": 0.82,
+        "f1": 0.846564613741545,
+        "support": 4350
+      }
+    },
+    "bce_loss": 0.031158910003393145,
+    "per_language": {
+      "English": {
+        "examples": 37310,
+        "exact_match_accuracy": 0.9533101045296167,
+        "label_accuracy": 0.9876619315643705,
+        "micro_f1": 0.9630382999223831,
+        "macro_f1": 0.7640250002652472,
+        "empty_prediction_rate": 0.009675690163495041,
+        "per_label": {
+          "English": {
+            "precision": 0.9977429590134441,
+            "recall": 0.999901655466317,
+            "f1": 0.9988211408736656,
+            "support": 30505
+          },
+          "Middle English": {
+            "precision": 0.8289156626506025,
+            "recall": 0.9772727272727273,
+            "f1": 0.8970013037809648,
+            "support": 1056
+          },
+          "French": {
+            "precision": 0.713963963963964,
+            "recall": 0.49453978159126366,
+            "f1": 0.584331797235023,
+            "support": 641
+          },
+          "Latin": {
+            "precision": 0.5818540433925049,
+            "recall": 0.5139372822299652,
+            "f1": 0.545790934320074,
+            "support": 574
+          },
+          "German": {
+            "precision": 0.8078078078078078,
+            "recall": 0.6359338061465721,
+            "f1": 0.7116402116402116,
+            "support": 423
+          },
+          "<OTHER>": {
+            "precision": 0.8749080206033848,
+            "recall": 0.82,
+            "f1": 0.846564613741545,
+            "support": 4350
+          }
+        }
+      }
+    }
+  },
+  "lstm_test": {
+    "examples": 37259,
+    "exact_match_accuracy": 0.9529778040205051,
+    "label_accuracy": 0.9874750619537114,
+    "micro_f1": 0.9624725245268858,
+    "macro_f1": 0.7699743822131421,
+    "empty_prediction_rate": 0.00955473845245444,
+    "per_label": {
+      "English": {
+        "precision": 0.9979056220956869,
+        "recall": 0.9999344176285414,
+        "f1": 0.9989189897467815,
+        "support": 30496
+      },
+      "Middle English": {
+        "precision": 0.8134453781512605,
+        "recall": 0.979757085020243,
+        "f1": 0.8888888888888888,
+        "support": 988
+      },
+      "French": {
+        "precision": 0.7571428571428571,
+        "recall": 0.5338129496402878,
+        "f1": 0.6261603375527426,
+        "support": 695
+      },
+      "Latin": {
+        "precision": 0.5783783783783784,
+        "recall": 0.5376884422110553,
+        "f1": 0.5572916666666666,
+        "support": 597
+      },
+      "German": {
+        "precision": 0.7754010695187166,
+        "recall": 0.6487695749440716,
+        "f1": 0.7064555420219245,
+        "support": 447
+      },
+      "<OTHER>": {
+        "precision": 0.8724798387096774,
+        "recall": 0.8138222849083215,
+        "f1": 0.8421308684018487,
+        "support": 4254
+      }
+    },
+    "bce_loss": 0.03263465772462427,
+    "per_language": {
+      "English": {
+        "examples": 37259,
+        "exact_match_accuracy": 0.9529778040205051,
+        "label_accuracy": 0.9874750619537114,
+        "micro_f1": 0.9624725245268858,
+        "macro_f1": 0.7699743822131421,
+        "empty_prediction_rate": 0.00955473845245444,
+        "per_label": {
+          "English": {
+            "precision": 0.9979056220956869,
+            "recall": 0.9999344176285414,
+            "f1": 0.9989189897467815,
+            "support": 30496
+          },
+          "Middle English": {
+            "precision": 0.8134453781512605,
+            "recall": 0.979757085020243,
+            "f1": 0.8888888888888888,
+            "support": 988
+          },
+          "French": {
+            "precision": 0.7571428571428571,
+            "recall": 0.5338129496402878,
+            "f1": 0.6261603375527426,
+            "support": 695
+          },
+          "Latin": {
+            "precision": 0.5783783783783784,
+            "recall": 0.5376884422110553,
+            "f1": 0.5572916666666666,
+            "support": 597
+          },
+          "German": {
+            "precision": 0.7754010695187166,
+            "recall": 0.6487695749440716,
+            "f1": 0.7064555420219245,
+            "support": 447
+          },
+          "<OTHER>": {
+            "precision": 0.8724798387096774,
+            "recall": 0.8138222849083215,
+            "f1": 0.8421308684018487,
+            "support": 4254
+          }
+        }
+      }
+    }
+  },
+  "majority_test": {
+    "examples": 37259,
+    "exact_match_accuracy": 0.8166885853082476,
+    "label_accuracy": 0.9385204469613606,
+    "micro_f1": 0.8160993363305502,
+    "macro_f1": 0.15003074803827515,
+    "empty_prediction_rate": 0.0,
+    "per_label": {
+      "English": {
+        "precision": 0.8184868085563219,
+        "recall": 1.0,
+        "f1": 0.9001844882296509,
+        "support": 30496
+      },
+      "Middle English": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 988
+      },
+      "French": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 695
+      },
+      "Latin": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 597
+      },
+      "German": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 447
+      },
+      "<OTHER>": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 4254
+      }
+    },
+    "per_language": {
+      "English": {
+        "examples": 37259,
+        "exact_match_accuracy": 0.8166885853082476,
+        "label_accuracy": 0.9385204469613606,
+        "micro_f1": 0.8160993363305502,
+        "macro_f1": 0.15003074803827515,
+        "empty_prediction_rate": 0.0,
+        "per_label": {
+          "English": {
+            "precision": 0.8184868085563219,
+            "recall": 1.0,
+            "f1": 0.9001844882296509,
+            "support": 30496
+          },
+          "Middle English": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 988
+          },
+          "French": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 695
+          },
+          "Latin": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 597
+          },
+          "German": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 447
+          },
+          "<OTHER>": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4254
+          }
+        }
+      }
+    },
+    "most_frequent_label_by_language": {
+      "English": "English"
+    }
+  },
+  "notes": [
+    "Test examples are scored only after selecting the best checkpoint.",
+    "Exact-match and F1 definitions are explicit choices; paper accuracy details are incomplete.",
+    "Macro F1 includes zero-support labels as zero.",
+    "No test-set threshold tuning or empty-prediction argmax fallback is applied."
+  ]
+}

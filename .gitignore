@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local data and experiment outputs (large; keep out of git)
+/Data/
+/data/
+/prepared/
+/runs/
+*.pt
+
+# macOS
+.DS_Store
