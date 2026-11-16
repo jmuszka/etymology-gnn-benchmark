@@ -8,12 +8,16 @@ authors = [
 ]
 requires-python = ">=3.13"
 dependencies = [
+    "numpy>=2.5.5",
     "torch>=2.5,<3",
+    "torch-geometric>=2.8.1",
 ]
 
 [project.scripts]
 lstm-prepare = "lstm_baseline.prepare_etymology:main"
 lstm-train = "lstm_baseline.train_lstm:main"
+gnn-build = "gnn.build_graph:main"
+gnn-train = "gnn.train_gnn:main"
 
 [build-system]
 requires = ["uv_build>=0.13,<0.14"]
@@ -21,8 +25,8 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 # Each experiment method is its own top-level package under src/.
-# Add new method packages (e.g. "gnn", "fusion") to this list.
-module-name = ["lstm_baseline"]
+# Add new method packages (e.g. "fusion") to this list.
+module-name = ["lstm_baseline", "gnn"]
 
 [dependency-groups]
 dev = [

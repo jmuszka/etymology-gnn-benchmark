@@ -1,13 +1,14 @@
 # etymology-gnn-benchmark
 
 Benchmarking models for computational etymology (Wu and Yarowsky 2020):
-a character-level LSTM baseline, with GNN and fusion methods to follow.
+a character-level LSTM baseline and a relational GNN, with a fusion method to follow.
 
 ## Layout
 
 ```
 src/                  one package per method
   lstm_baseline/      character LSTM baseline (see its README.md)
+  gnn/                relational GNN on the word-relation graph (see its README.md)
 notebooks/            Jupyter notebooks for analysis
 results/<method>/     small committed result files (metrics, histories)
 pyproject.toml        dependencies (managed by uv); uv.lock pins versions
